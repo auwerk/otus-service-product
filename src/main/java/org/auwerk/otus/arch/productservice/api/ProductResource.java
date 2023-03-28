@@ -46,7 +46,7 @@ public class ProductResource {
     public Uni<Response> getAvailable(@QueryParam("page") @DefaultValue(DEFAULT_PAGE) int page,
             @QueryParam("pageSize") @DefaultValue(DEFAULT_PAGE_SIZE) int pageSize) {
         return productService.getAvailableProducts(page, pageSize)
-                .map(products -> Response.ok(productMapper.toDtos(products)).build())
+                .map(products -> Response.ok(productMapper.toAvailableDtos(products)).build())
                 .onFailure()
                 .recoverWithItem(failure -> Response.serverError().entity(failure.getMessage()).build());
     }
