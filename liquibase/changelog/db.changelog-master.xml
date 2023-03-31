@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.19.xsd">
+
+    <changeSet id="01-create-products-table" author="auwerk">
+        <createTable tableName="products" remarks="Products">
+            <column name="code" type="varchar(64)" remarks="Product code">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="varchar(255)" remarks="Product name" />
+            <column name="description" type="text" remarks="Product description" />
+            <column name="available" type="boolean" remarks="Product availability" />
+            <column name="price" type="decimal" remarks="Ordered quantity" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="02-fill-initial-products" author="auwerk">
+        <insert tableName="products">
+            <column name="code" value="EDITOR" />
+            <column name="name" value="Text Editor" />
+            <column name="description" value="Text Editor application with formatting" />
+            <column name="available" value="true" />
+            <column name="price" value="500" />
+        </insert>
+        <insert tableName="products">
+            <column name="code" value="PHOTO" />
+            <column name="name" value="Photo Viewer" />
+            <column name="description" value="Photo Viewer application" />
+            <column name="available" value="true" />
+            <column name="price" value="1500.50" />
+        </insert>
+        <insert tableName="products">
+            <column name="code" value="PLAYER" />
+            <column name="name" value="Media Player" />
+            <column name="description" value="Media Player application" />
+            <column name="available" value="true" />
+            <column name="price" value="100.75" />
+        </insert>
+        <insert tableName="products">
+            <column name="code" value="CALC" />
+            <column name="name" value="Calculator" />
+            <column name="description" value="Fancy calculator application" />
+            <column name="available" value="false" />
+            <column name="price" value="10" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
